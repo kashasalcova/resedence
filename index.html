@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Креативна резиденція МС6</title>
+<style>
+:root{--bg:#fafaf7;--fg:#1d1d1b;--mute:#6b6b66;--line:#dcdcd5;--acc:#2f5d50}
+@media(prefers-color-scheme:dark){:root{--bg:#161715;--fg:#ecece6;--mute:#9a9a92;--line:#33342f;--acc:#8fc7b5}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:640px;margin:0 auto;padding:20px 18px 64px}
+header{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+h1{font-size:1.5rem;line-height:1.25;margin:.6em 0}
+.lang button{font:inherit;font-size:.9rem;background:none;border:1px solid var(--line);color:var(--mute);padding:2px 10px;cursor:pointer;border-radius:6px}
+.lang button[aria-pressed=true]{color:var(--fg);border-color:var(--fg)}
+a{color:var(--acc)}
+h2{font-size:1.1rem;margin:1.6em 0 .4em}
+.key{border-left:3px solid var(--acc);padding:2px 0 2px 16px;margin:1em 0 1.6em}
+.key ul{margin:.3em 0;padding-left:1.1em}
+details{border-top:1px solid var(--line)}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;padding:14px 0;font-weight:600;list-style-position:outside}
+details>div{padding:0 0 14px}
+ul,ol{padding-left:1.2em}li{margin:.3em 0}
+img{max-width:100%;height:auto}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+</style>
+</head>
+<body>
+<main>
+  <header><h1 id="title"></h1><div class="lang" id="lang"></div></header>
+  <p id="intro"></p>
+  <div class="key"><h2 id="keyTitle" style="margin-top:.4em"></h2><ul id="key"></ul></div>
+  <div id="sections"></div>
+</main>
+<script src="content.js"></script>
+<script>
+let L = 'uk';
+try { L = localStorage.getItem('lang') || (navigator.language.startsWith('uk') ? 'uk' : 'en'); } catch (e) {}
+if (!SITE[L]) L = 'uk';
+
+function render() {
+  const d = SITE[L];
+  document.documentElement.lang = L;
+  document.title = d.title;
+  title.textContent = d.title;
+  intro.textContent = d.intro;
+  keyTitle.textContent = d.keyTitle;
+  key.innerHTML = d.key.map(k => `<li>${k}</li>`).join('');
+  sections.innerHTML = d.sections.map(s =>
+    `<details${s.open ? ' open' : ''}><summary>${s.t}</summary><div>${s.h}</div></details>`).join('');
+  lang.innerHTML = Object.keys(SITE).map(k =>
+    `<button data-l="${k}" aria-pressed="${k === L}">${SITE[k].label}</button>`).join(' ');
+}
+lang.addEventListener('click', e => {
+  const l = e.target.dataset.l;
+  if (!l) return;
+  L = l;
+  try { localStorage.setItem('lang', l); } catch (err) {}
+  render();
+});
+render();
+</script>
+</body>
+</html>
