@@ -3,7 +3,8 @@
 const C = {
   oleksiiTg: 'https://t.me/nyshkom', oleksiiPhone: '0687685171',
   trayanTg: 'https://t.me/Trayan', trayanPhone: '0979764043',
-  adminTg: '', // TODO: Telegram онлайн-адміністратора (напр. https://t.me/назва). Поки порожньо — не показується
+  adminTg: 'https://t.me/residence_mc6', adminPhone: '0976562285',
+  instagram: 'https://www.instagram.com/residence_mc6',
   foodGroup: 'https://t.me/+D7LSStt8Nc5mMjFi',
   taxiPhone: '0964318503', emergencyPhone: '0678552267',
   breakfast: 300, lunch: 450, dinner: 400, banya: 2000, lift: 400
@@ -33,14 +34,16 @@ const SITE = {
         <li>Домовтеся про бронювання з онлайн-адміністратором${C.adminTg ? ' (' + a(C.adminTg, 'Telegram') + ')' : ''} і внесіть передплату.</li>
         <li>Отримайте підтвердження, що можна приїздити.</li>
         <li>Дістаньтеся до нас (таксі від вокзалу: див. розділ «Дорога»).</li>
-        <li>Знайдіть свій будиночок або кімнату за картою. Будиночки: Модрина, Зерно, Море, Ахріхата. В Арт-просторі 8 кімнат без номерів.</li>
+        <li>Знайдіть свій будиночок або кімнату за картою. Будиночки: Модрина, Зерно, Море, а також Архіхатка та Садиба (нижня локація, біля парковки). В Арт-просторі 8 кімнат без номерів.</li>
         <li>Заселяйтесь: будиночки з 14:00, Арт-простір після 12:00. Ранній заїзд чи пізній виїзд можливі за додаткову плату (0,5 доби), домовляйтеся з онлайн-адміністратором.</li>
         <li>Виїзд до 10:00. За харчування розраховуєтесь наприкінці перебування.</li></ol>
         <p>Не можете знайти своє місце? Напишіть чи зателефонуйте Олексію або Траяну.</p>` },
       { t: 'Контакти', h: `<ul>
         <li>Олексій (технічний адміністратор): ${oleksii}</li>
         <li>Траян: ${trayan}</li>
-        ${C.adminTg ? `<li>Онлайн-адміністратор: ${a(C.adminTg, 'Telegram')}</li>` : ''}
+        <li>Онлайн-адміністратор (бронювання, питання до приїзду): ${a(C.adminTg, '@residence_mc6')}, ${tel(C.adminPhone)}</li>
+        <li>Адреса: с. Славське, вул. Волошина, 68б.</li>
+        <li>Instagram: ${a(C.instagram, '@residence_mc6')}</li>
         <li>Команда кухні змінюється, але допоможе з оперативними питаннями або підкаже, до кого звернутися.</li></ul>
         <p><b>Немає зв'язку або ніхто не відповідає?</b> Зверніться до Ресторації МС6 (9:00–21:00).</p>` },
       { t: 'Карта території', h: mapImg },
@@ -62,19 +65,22 @@ const SITE = {
         <li><b>Баня і чан:</b> замовляйте мінімум за добу. Баня ${C.banya} грн за годину, до 10 осіб. Вартість чану уточнюйте.</li>
         <li><b>Студія звукозапису:</b> безкоштовно, бронювання мінімум за добу. Базове обладнання: пуш-контролер, клавіші, мікрофони, гітари, сопілки, джембе, монітори.</li>
         <li><b>Крамничка при ресторації:</b> працює цілодобово, оплата самостійно за QR-кодом. Прикраси ручної роботи, свічки, мед, чай з місцевих трав, кераміка.</li></ul>` },
-      { t: 'Поруч', h: `<ul><li>Підйомник на гору Тростян: субота та неділя 10:00–17:00, ${C.lift} грн.</li></ul>` },
+      { t: 'Поруч', h: `<ul><li>Підйомник на гору Тростян: субота та неділя 10:00–17:00, ${C.lift} грн.</li>
+        <li>Магазини й кафе: біля вокзалу, за 3 км від нас. Купіть продукти по дорозі.</li></ul>` },
       { t: 'Правила', h: `<ul>
         <li>Тиша після 23:00.</li>
         <li>Не впускайте наших тваринок у приміщення.</li>
-        <li>Щось розбили чи пошкодили? Повідомте ${a(C.oleksiiTg, '@nyshkom')}.</li>
-        <li>Ми pet-friendly, без доплати. Про приїзд з улюбленцем повідомте заздалегідь: не всі номери можуть їх прийняти.</li></ul>` },
+        <li>Щось розбили чи пошкодили? Повідомте ${a(C.oleksiiTg, '@nyshkom')}.</li></ul>` },
       { t: 'Часті питання', h: `<ul>
         <li><b>Зникла вода?</b> Напишіть ${a(C.trayanTg, '@Trayan')}.</li>
         <li><b>Зник інтернет?</b> Напишіть ${a(C.trayanTg, '@Trayan')}.</li>
         <li><b>Екстрена ситуація:</b> 103 або Катерина ${tel(C.emergencyPhone)}. Аптечки є в ресторації, Арт-просторі та резиденції. Найближча лікарня: смт Славське (у суботу й неділю не працює) та смт Сколе, 30 км.</li>
         <li><b>Мобільний зв'язок:</b> у горах працюють усі оператори.</li>
         <li><b>Білизна, рушники, прибирання:</b> надає резиденція.</li>
-        <li><b>Парковка:</b> залиште авто на парковці біля «Садиби МС6» (нижня локація).</li></ul>` }
+        <li><b>Парковка:</b> залиште авто на парковці біля «Садиби МС6» (нижня локація). До неї можна доїхати легковим авто.</li>
+        <li><b>Світло та Wi-Fi:</b> електрику вимикають за графіком. В Арт-просторі та Резиденції є еко-флоу для зарядки гаджетів, і під час відключень Wi-Fi працює лише там.</li>
+        <li><b>Посуд і кухня:</b> у кожному будиночку є посуд, рушники, постіль і невелика кухня з плитою. В Арт-просторі спільна кухня: місце для приготування, холодильник, кавоварка, чайник.</li>
+        <li><b>Мангал:</b> на кухні кемпінгу (сезонно).</li></ul>` }
     ]
   },
   en: {
@@ -95,14 +101,16 @@ const SITE = {
         <li>Agree on your booking with the online administrator${C.adminTg ? ' (' + a(C.adminTg, 'Telegram') + ')' : ''} and pay the prepayment.</li>
         <li>Receive confirmation that you may come.</li>
         <li>Get here (taxi from the station: see “Getting here”).</li>
-        <li>Find your house or room using the map. Houses: Modryna, Zerno, More, Akhrikhata. The Art Space has 8 unnumbered rooms.</li>
+        <li>Find your house or room using the map. Houses: Modryna, Zerno, More, plus Arkhikhatka and Sadyba (the lower location, next to the parking). The Art Space has 8 unnumbered rooms.</li>
         <li>Settle in: houses from 14:00, Art Space from 12:00. Early check-in or late check-out costs half a day's price; arrange it with the online administrator.</li>
         <li>Check out by 10:00. Pay for meals at the end of your stay.</li></ol>
         <p>Can't find your place? Message or call Oleksii or Trayan.</p>` },
       { t: 'Contacts', h: `<ul>
         <li>Oleksii (technical administrator): ${oleksii}</li>
         <li>Trayan: ${trayan}</li>
-        ${C.adminTg ? `<li>Online administrator: ${a(C.adminTg, 'Telegram')}</li>` : ''}
+        <li>Online administrator (bookings, questions before arrival): ${a(C.adminTg, '@residence_mc6')}, ${tel(C.adminPhone)}</li>
+        <li>Address: 68b Voloshyna St., Slavske.</li>
+        <li>Instagram: ${a(C.instagram, '@residence_mc6')}</li>
         <li>The kitchen team changes, but they can help with urgent questions or tell you who to ask.</li></ul>
         <p><b>No connection or no answer?</b> Go to the MS6 Restaurant (9:00–21:00).</p>` },
       { t: 'Map', h: mapImg.replace('Схему території додамо найближчим часом.', 'Map coming soon.') },
@@ -124,19 +132,22 @@ const SITE = {
         <li><b>Banya and chan (hot tub):</b> book at least 1 day ahead. Banya ${C.banya} UAH per hour, up to 10 people. Chan price on request.</li>
         <li><b>Recording studio:</b> free, book at least 1 day ahead. Basic gear: push controller, keys, microphones, guitars, flutes, djembe, monitors.</li>
         <li><b>Souvenir shop at the restaurant:</b> open 24/7, pay yourself by QR code. Handmade jewelry, candles, honey, local herbal tea, ceramics.</li></ul>` },
-      { t: 'Nearby', h: `<ul><li>Trostian mountain lift: Saturday and Sunday 10:00–17:00, ${C.lift} UAH.</li></ul>` },
+      { t: 'Nearby', h: `<ul><li>Trostian mountain lift: Saturday and Sunday 10:00–17:00, ${C.lift} UAH.</li>
+        <li>Shops and cafes: near the station, 3 km from us. Buy groceries on the way.</li></ul>` },
       { t: 'Rules', h: `<ul>
         <li>Quiet hours after 23:00.</li>
         <li>Please don't let our animals into the buildings.</li>
-        <li>Broke or damaged something? Tell ${a(C.oleksiiTg, '@nyshkom')}.</li>
-        <li>Pet-friendly, no extra fee. Warn us in advance: not all rooms can take pets.</li></ul>` },
+        <li>Broke or damaged something? Tell ${a(C.oleksiiTg, '@nyshkom')}.</li></ul>` },
       { t: 'FAQ', h: `<ul>
         <li><b>No water?</b> Message ${a(C.trayanTg, '@Trayan')}.</li>
         <li><b>No internet?</b> Message ${a(C.trayanTg, '@Trayan')}.</li>
         <li><b>Emergency:</b> 103 or Kateryna ${tel(C.emergencyPhone)}. First-aid kits are in the restaurant, Art Space and residence. Nearest hospitals: Slavske (closed Sat and Sun) and Skole, 30 km.</li>
         <li><b>Mobile signal:</b> all operators work in the mountains.</li>
         <li><b>Bedding, towels, cleaning:</b> provided by the residence.</li>
-        <li><b>Parking:</b> leave your car near “Sadyba MS6” (lower location).</li></ul>` }
+        <li><b>Parking:</b> leave your car near “Sadyba MS6” (lower location). An ordinary car can get there.</li>
+        <li><b>Power and Wi-Fi:</b> electricity is switched off on a schedule. The Art Space and the Residence have eco-flow stations for charging gadgets, and during outages Wi-Fi works only there.</li>
+        <li><b>Dishes and kitchen:</b> every house has dishes, towels, bedding and a small kitchen with a stove. The Art Space has a shared kitchen: a cooking area, fridge, coffee machine and kettle.</li>
+        <li><b>Grill:</b> at the camping kitchen (seasonal).</li></ul>` }
     ]
   }
 };
