@@ -1,8 +1,8 @@
 // ВСІ ТЕКСТИ САЙТУ ТУТ. Редагуйте лише текст між лапками/зворотними лапками.
 // Контакти та ціни змінюються один раз у блоці C — вони підставляться всюди.
 const C = {
-  oleksiiTg: 'https://t.me/nyshkom', oleksiiPhone: '0687685171',
-  trayanTg: 'https://t.me/Trayan', trayanPhone: '0979764043',
+  oleksiiTg: 'https://t.me/nyshkom',
+  trayanTg: 'https://t.me/Trayan',
   adminTg: 'https://t.me/residence_mc6', adminPhone: '0976562285',
   instagram: 'https://www.instagram.com/residence_mc6',
   foodGroup: 'https://t.me/+D7LSStt8Nc5mMjFi',
